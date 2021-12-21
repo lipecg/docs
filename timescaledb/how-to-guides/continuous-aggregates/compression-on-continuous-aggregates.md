@@ -52,8 +52,8 @@ The compression policy should be set so that `compress_after` parameter is great
 SELECT add_compression_policy('cagg_name', compress_after=>'45 days'::interval);
 ```
 
-Once a chunk is compressed, manual refresh calls that attempt to refresh the 
-compressed region will fail with an error as shown below.
+After a chunk is compressed, manual refresh calls that attempt to refresh the 
+continuous aggregate's compressed region will fail with an error like this:
 
 ```sql
 CALL refresh_continuous_aggregate('cagg_name', NULL, now() - '30 days'::interval );
